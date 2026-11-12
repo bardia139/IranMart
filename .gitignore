@@ -4,3 +4,8 @@ out
 .env*
 !.env.example
 .DS_Store
+
+.open-next
+.wrangler
+.dev.vars
+cloudflare-env.d.ts
