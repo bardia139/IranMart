@@ -1,0 +1,9 @@
+create extension if not exists pgcrypto;
+create table if not exists public.categories(id uuid primary key default gen_random_uuid(),name text not null unique,slug text not null unique);
+create table if not exists public.sources(id uuid primary key default gen_random_uuid(),name text not null unique,source_type text not null default 'store',website_url text,connection_status text not null default 'not_connected' check(connection_status in('not_connected','connected','paused')),notes text,created_at timestamptz not null default now());
+create table if not exists public.products(id uuid primary key default gen_random_uuid(),canonical_title text not null,normalized_title text,category_id uuid references public.categories(id),brand text,model text,attributes jsonb not null default '{}'::jsonb,created_at timestamptz not null default now());
+create table if not exists public.offers(id uuid primary key default gen_random_uuid(),product_id uuid not null references public.products(id) on delete cascade,source_id uuid not null references public.sources(id),seller_name text,title_at_source text not null,price numeric(14,2),currency text not null default 'IRR',condition text not null default 'unknown' check(condition in('new','used','unknown')),availability text,product_url text not null,rating numeric(3,2),review_count integer,last_checked_at timestamptz,is_verified boolean not null default false,created_at timestamptz not null default now());
+create index if not exists offers_product_price_idx on public.offers(product_id,price);
+create index if not exists offers_source_idx on public.offers(source_id);
+create index if not exists products_search_idx on public.products using gin(to_tsvector('simple',coalesce(canonical_title,'')));
+-- پیش از انتشار عمومی، RLS و policyهای محدود و دقیق تنظیم شوند؛ نوشتن عمومی فعال نشود.
