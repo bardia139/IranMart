@@ -1,0 +1,2 @@
+export type Category="همه دسته‌ها"|"کالای دیجیتال"|"خانه و آشپزخانه"|"مد و پوشاک"|"سوپرمارکت"|"خودرو و موتورسیکلت"|"ملک و املاک"|"عمده‌فروشی"|"دست‌ساز و خانگی"|"کتاب و فرهنگ"|"خدمات و استخدام"|"آگهی و کالای دست‌دوم";
+export type Offer={id:string;title:string;category:Category;price:number;seller:string;source:string;condition:"نو"|"دست‌دوم"|"نامشخص";rating?:number;reviewCount?:number;url:string;updatedAt:string;isDemo:boolean};
