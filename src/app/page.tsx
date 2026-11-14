@@ -1,6 +1,7 @@
 "use client";
 
-import { FormEvent, useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
+import type { FormEvent } from "react";
 import { sources as localSources } from "@/lib/sources";
 
 const API_BASE = "https://iranmart-catalog-api.v80bk-85ck7f37a0-gpsy06m8h.workers.dev";
@@ -150,7 +151,7 @@ export default function Home() {
         <h2 className="text-xl font-bold">همه منابع ایران‌مارت</h2>
         <span className="text-xs text-slate-500">{sourceRows.length} منبع ثبت‌شده</span>
       </div>
-      <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3">{sourceRows.map(s => <div key={s.slug || s.name} className="bg-white border border-slate-200 rounded-xl p-4">
+      <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3">{sourceRows.map(s => <div key={"slug" in s ? s.slug : s.name} className="bg-white border border-slate-200 rounded-xl p-4">
         <div className="font-bold">{s.name}</div>
         <div className="text-xs text-slate-500 mt-1">{s.group} · {s.integration}</div>
         <div className={`text-xs mt-2 ${s.status === "connected_with_data" ? "text-emerald-700" : "text-amber-700"}`}>{sourceStatus(s.status)}</div>
