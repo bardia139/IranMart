@@ -1,0 +1,17 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "iranmart-catalog-api",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-11-15",
+  "workers_dev": true,
+  "vars": {
+    "ALLOWED_ORIGIN": "https://bardia139.github.io"
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "iranmart-catalog",
+      "database_id": "d8ca0181-46d1-4122-be8a-b5275fc89cab"
+    }
+  ]
+}
