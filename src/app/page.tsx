@@ -49,7 +49,7 @@ export default function Home() {
       </article>) : <p className="text-slate-500">نتیجه آزمایشی برای این عبارت پیدا نشد.</p>}</div>
       <p className="mt-5 text-xs leading-6 text-slate-500">توجه: این نسخه صرفاً رابط اولیه است. قیمت‌ها، فروشندگان، امتیازها و نظرات واقعی نیستند و هنوز هیچ منبع خارجی به سامانه متصل نشده است.</p>
     </section>
-    <section className="max-w-6xl mx-auto px-5 pb-16"><h2 className="text-xl font-bold mb-4">منابع در برنامه اتصال</h2><div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3">{sources.map(s => <div key={s.name} className="bg-white border border-slate-200 rounded-xl p-4"><div className="font-bold">{s.name}</div><div className="text-xs text-slate-500 mt-1">{s.type} · {s.status}</div></div>)}</div></section>
+    <section className="max-w-6xl mx-auto px-5 pb-16"><h2 className="text-xl font-bold mb-4">منابع در برنامه اتصال</h2><div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3">{sources.map(s => <div key={s.name} className="bg-white border border-slate-200 rounded-xl p-4"><div className="font-bold">{s.name}</div><div className="text-xs text-slate-500 mt-1">{s.group} · {s.integration} · {s.status}</div></div>)}</div></section>
     <footer className="text-center text-xs text-slate-500 py-7 border-t border-slate-200">ایران‌مارت · نسخه اولیه</footer>
   </main>;
 }
